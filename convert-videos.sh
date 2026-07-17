@@ -15,6 +15,7 @@ convert_video() {
 
     # Construct the ffmpeg command
     local cmd
+    #cmd="ffmpeg -i \"$input_file\" -c:v libx264 -preset fast -crf 18 -c:a pcm_s16be \"$output_file\" < /dev/null"
     cmd="ffmpeg -i \"$input_file\" -c:v copy -c:a pcm_s16be \"$output_file\" < /dev/null"
 
     # Print and execute the command
@@ -33,13 +34,13 @@ main() {
 
     local file
     while IFS= read -r -d $'\0' file; do
-        if [[ -f "$file" && ( "${file##*.}" == "mp4" || "${file##*.}" == "mov" || "${file##*.}" == "avi" ) ]]; then
+        if [[ -f "$file" && ( "${file##*.}" == "mp4" || "${file##*.}" == "mov" || "${file##*.}" == "avi" || "${file##*.}" == "mkv" || "${file##*.}" == "m4v" ) ]]; then
             printf "Processing file: %s\n" "$file"
             if ! convert_video "$file"; then
                 printf "Failed to process %s\n" "$file" >&2
             fi
         fi
-    done < <(find "$INPUT_DIR" -type f \( -iname '*.mp4' -o -iname '*.mov' -o -iname '*.avi' \) -print0)
+    done < <(find "$INPUT_DIR" -type f \( -iname '*.mp4' -o -iname '*.mov' -o -iname '*.avi' -o -iname '*.mkv' -o -iname '*.m4v' \) -print0)
 
     printf "All video files processed.\n"
 }

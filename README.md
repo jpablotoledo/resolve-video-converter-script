@@ -1,7 +1,7 @@
 # resolve-video-converter-script
 Script to convert any unsuported codec video for Blackmagicdesign Davinci Resolve Unix machines
 
-This script converts all `.mp4` and `.mov` video files in a specified input directory to a specified output format using `ffmpeg`. The converted files are saved in a specified output directory.
+This script converts all `.mp4`, `.mov`, `.avi`, `.mkv` and `.m4v` video files in a specified input directory to a specified output format using `ffmpeg`. The converted files are saved in a specified output directory.
 
 ![alt Convertion example](https://github.com/pablotoledom/resolve-video-converter-script/blob/main/assets/converter.gif?raw=true)
 
@@ -22,7 +22,7 @@ This script converts all `.mp4` and `.mov` video files in a specified input dire
 ./convert-videos.sh /path/to/input /path/to/output mov
 ```
 
-This command will convert all .mp4 and .mov files in /path/to/input to .mov format and save the converted files in /path/to/output.
+This command will convert all .mp4, .mov, .avi, .mkv and .m4v files in /path/to/input to .mov format and save the converted files in /path/to/output.
 
 ## Requirements
 
@@ -66,7 +66,7 @@ Run install.sh, this script copies 'convert-videos.sh' to the /usr/local/bin/ di
 #### The script performs the following steps:
 
   - Creates the output directory if it doesn't exist.
-  - Finds all .mp4 and .mov files in the input directory.
+  - Finds all .mp4, .mov, .avi, .mkv and .m4v files in the input directory.
   - Converts each found video file to the specified output format using ffmpeg.
   - Prints the ffmpeg command being executed and the status of each conversion.
 
